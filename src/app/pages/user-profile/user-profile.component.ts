@@ -13,8 +13,8 @@ import { UserDetails } from '../../core/interfaces/user.interface';
 })
 export class UserProfileComponent {
 
-  route = inject(ActivatedRoute);
-  githubService = inject(GithubService);
+  private route = inject(ActivatedRoute);
+  private githubService = inject(GithubService);
 
   user = signal<UserDetails | null>(null);
 

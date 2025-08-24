@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class GithubService {
 
-  http = inject(HttpClient);
+  private http = inject(HttpClient);
 
   searchUsers(q: string): Observable<Response> {
     return this.http.get<Response>(`${environment.apiUrl}/search/users?q=${encodeURIComponent(q)}`)

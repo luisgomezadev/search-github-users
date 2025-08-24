@@ -11,7 +11,7 @@ import { ErrorService } from '../../../core/services/error.service';
 })
 export class ErrorContainerComponent {
 
-  errorService = inject(ErrorService);
+  private errorService = inject(ErrorService);
 
   message = signal<string | null>(null);
 
