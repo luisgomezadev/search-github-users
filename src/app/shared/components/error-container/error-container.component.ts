@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ErrorService } from '../../../core/services/error.service';
 
 @Component({
@@ -11,14 +11,16 @@ import { ErrorService } from '../../../core/services/error.service';
 })
 export class ErrorContainerComponent {
 
+  errorService = inject(ErrorService);
+
   message = signal<string | null>(null);
 
-  constructor(private errors: ErrorService) {
-    this.errors.message$.subscribe(this.message.set);
+  constructor() {
+    this.errorService.message$.subscribe(this.message.set);
   }
 
   close() {
-    this.errors.clear();
+    this.errorService.clear();
   }
 
 }
