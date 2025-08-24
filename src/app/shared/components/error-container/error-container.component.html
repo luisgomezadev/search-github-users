@@ -1,0 +1,10 @@
+@if (message()) {
+<div
+  class="flex items-center justify-between p-4 mb-4 text-sm rounded-lg bg-red-200 text-red-800"
+>
+  <p>{{ message() }}</p>
+  <button (click)="close()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>
+}
