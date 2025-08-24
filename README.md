@@ -1,27 +1,45 @@
-# GithubUsers
+# GitHub Users
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+Aplicación web desarrollada con Angular 17 y Tailwind CSS que permite buscar usuarios de GitHub, visualizar información de sus perfiles y mostrar un gráfico de los seguidores de los 10 primeros resultados.
 
-## Development server
+## 📝 Descripción
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Esta aplicación consume la API pública de GitHub para:
 
-## Code scaffolding
+- Buscar usuarios mediante un campo de texto con validación.
+- Listar los primeros 10 resultados con información básica: avatar, login e ID.
+- Navegar a un perfil de usuario mediante rutas dinámicas.
+- Mostrar un gráfico de barras con el número de seguidores de los usuarios mostrados.
+- Manejar errores y mostrar mensajes de validación en toda la aplicación.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Se implementó Tailwind CSS para un diseño limpio y moderno y Chart.js para los gráficos.
 
-## Build
+## ⚙️ Tecnologías
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Angular 17
+- Tailwind CSS
+- Chart.js
+- Font Awesome (iconos)
+- TypeScript
+- Signals de Angular 17
 
-## Running unit tests
+## 📦 Instalación
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clona el repositorio:
 
-## Running end-to-end tests
+```bash
+git clone https://github.com/luisgomezadev/search-github-users.git
+cd github-users
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Instala las dependencias:
 
-## Further help
+```bash
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. Levanta el proyecto:
+
+```bash
+ng serve
+```
