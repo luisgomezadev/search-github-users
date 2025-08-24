@@ -9,6 +9,7 @@ import { Response } from '../../core/interfaces/response.interface';
 import { CardUserComponent } from '../../shared/components/card-user/card-user.component';
 import { FollowersChartComponent } from '../../shared/components/followers-chart/followers-chart.component';
 import { forkJoin, switchMap, tap } from 'rxjs';
+import { ErrorService } from '../../core/services/error.service';
 
 @Component({
   selector: 'app-search',
@@ -26,6 +27,7 @@ import { forkJoin, switchMap, tap } from 'rxjs';
 export class SearchComponent {
   private fb = inject(FormBuilder);
   private githubService = inject(GithubService);
+  private errorService = inject(ErrorService);
 
   form: FormGroup;
 
@@ -48,6 +50,7 @@ export class SearchComponent {
     }
 
     this.loading.set(true);
+    this.errorService.clear();
 
     this.githubService.searchUsers(this.form.value.query).pipe(
       switchMap((res: Response) => {
