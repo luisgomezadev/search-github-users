@@ -4,12 +4,12 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { ScoreGuard } from './core/guards/score.guard';
 
 export const routes: Routes = [
-  { path: '', component: SearchComponent, title: 'GitHub Users' },
+  { path: '', component: SearchComponent, title: 'GitHub Usuarios' },
   {
     path: 'user/:login',
     component: UserProfileComponent,
     canActivate: [ScoreGuard],
-    title: 'User Profile'
+    title: 'Perfil de Usuario'
   },
   { path: '**', redirectTo: '' }
 ];
