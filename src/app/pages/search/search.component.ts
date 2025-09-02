@@ -52,27 +52,18 @@ export class SearchComponent {
     this.loading.set(true);
     this.errorService.clear();
 
-    this.githubService.searchUsers(this.form.value.query).pipe(
-      switchMap((res: Response) => {
-        const users = (res.items ?? []).map(u => ({
-          login: u.login,
-          id: u.id,
-          avatar_url: u.avatar_url
-        }));
-        this.users.set(users);
-
-        const userDetails$ = users.map(u => this.githubService.getUser(u.login));
-        return forkJoin(userDetails$);
-      }),
-      tap((details: UserDetails[]) => {
-        const labels = details.map(d => d.login);
-        const followers = details.map(d => d.followers ?? 0);
-        this.chartLabels.set(labels);
-        this.chartFollowers.set(followers);
-        this.loading.set(false);
-      })
-    ).subscribe({
-      error: () => this.loading.set(false)
-    });
+    this.githubService.searchUsers(this.form.value.query)
+      .pipe(
+        tap(({ response, labels, followers }) => {
+          this.users.set(response.items);
+          this.chartLabels.set(labels);
+          this.chartFollowers.set(followers);
+          this.loading.set(false);
+        })
+      )
+      .subscribe({
+        error: () => this.loading.set(false)
+      });
   }
+
 }
